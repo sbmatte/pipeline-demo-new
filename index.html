@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pipeline Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+    .card {
+      text-align: center;
+      padding: 3rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      max-width: 500px;
+      width: 90%;
+    }
+    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .badge {
+      display: inline-block;
+      background: #00d4aa;
+      color: #000;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
+    p { color: rgba(255,255,255,0.7); margin-bottom: 2rem; line-height: 1.6; }
+    .counter {
+      font-size: 4rem;
+      font-weight: bold;
+      color: #00d4aa;
+      margin: 1rem 0;
+    }
+    button {
+      background: #00d4aa;
+      color: #000;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 5px;
+      transition: transform 0.1s, opacity 0.2s;
+    }
+    button:hover { opacity: 0.85; transform: scale(1.05); }
+    button.reset { background: rgba(255,255,255,0.15); color: white; }
+    .footer { margin-top: 2rem; font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🚀 Pipeline Demo</h1>
+    <div class="badge">Deployed via GitHub Actions</div>
+    <p>This site was automatically built and deployed using a CI/CD pipeline. Click the button to interact!</p>
+    <div class="counter" id="count">0</div>
+    <div>
+      <button onclick="increment()">+ Click Me</button>
+      <button class="reset" onclick="reset()">Reset</button>
+    </div>
+    <div class="footer">Built with ❤️ by GitHub Actions · <span id="ts"></span></div>
+  </div>
+  <script>
+    let n = 0;
+    document.getElementById('ts').textContent = new Date().toLocaleString();
+    function increment() {
+      n++;
+      document.getElementById('count').textContent = n;
+    }
+    function reset() {
+      n = 0;
+      document.getElementById('count').textContent = 0;
+    }
+  </script>
+</body>
+</html>
